@@ -9,154 +9,146 @@
 #F09219
 #F7BB0D
 */
+// vendors = official
 
-green = #0AB3AE;
-lgreen = #5EBFBA;
-purple = #6A718D;
-lred = #EA6057;
-red = #E74144;
-orage = #F09219;
-yellow = #F7BB0D;
+vendor-transform(prop, args) {
+  -webkit-{prop} args
+  -ms-{prop} args
+  {prop} args
+}
+vendor-animation(prop, args) {
+  -webkit-{prop} args
+  {prop} args
+}
+
+transform() {
+  vendor-transform('transform', arguments)
+}
+
+animation() {
+  vendor('animation', arguments)
+}
+
+green = #0AB3AE
+lgreen = #5EBFBA
+purple = #6A718D
+lred = #EA6057
+red = #E74144
+yellow = #F09219
+l-yellow = #F7BB0D
 
 .tsumiki-logo {
-  background: #fff;
-  padding: 20% 0 0 256px;
-  width: 512px;
-  margin: 0 auto;
-  -webkit-transform: scale(1, 1.2);
-      -ms-transform: scale(1, 1.2);
-          transform: scale(1, 1.2);
+  background #fff
+  // padding 20% 0 0 256px
+  width 512px
+  margin 0 auto
+  transform scale(1, 1.2) translateX(25%) translateY(15%);
 }
 
 .cube {
-  width: 256px;
-  height: 256px;
-  position: relative;
+  width 256px
+  height 256px
+  position relative
 }
 
 .cube-green {
-  background: #5EBFBA;
-  z-index: 2;
-  -webkit-transform: rotate(22.5deg) skew(-45deg) scale(1, .7);
-      -ms-transform: rotate(22.5deg) skew(-45deg) scale(1, .7);
-          transform: rotate(22.5deg) skew(-45deg) scale(1, .7);
-
-  -webkit-animation-name: anime-green;
-          animation-name: anime-green;
-  -webkit-animation-delay: 0;
-          animation-delay: 0;
-  -webkit-animation-direction: normal;
-          animation-direction: normal;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-  -webkit-animation-iteration-count: 1;
-          animation-iteration-count: 1;
-  -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
-          animation-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  /*-webkit-animation-play-state: running;*/
-  /*animation-play-state: running;*/
+  background green
+  z-index 2
+  transform rotate(22.5deg) skew(-45deg) scale(1, .7)
+  // -webkit-animation-name anime-green
+  // animation-name anime-green
+  // -webkit-animation-delay 0
+  // animation-delay 0
+  // -webkit-animation-direction normal
+  // animation-direction normal
+  // -webkit-animation-duration 1s
+  // animation-duration 1s
+  // -webkit-animation-iteration-count 1
+  // animation-iteration-count 1
+  // -webkit-animation-timing-function cubic-bezier(0.1, 0.7, 1.0, 0.1)
+  // animation-timing-function cubic-bezier(0.1, 0.7, 1.0, 0.1)
+  // -webkit-animation-fill-mode forwards
+  // animation-fill-mode forwards
+  /*-webkit-animation-play-state running*/
+  /*animation-play-state running*/
 }
-@-webkit-keyframes anime-green {
-  0% {
-    top: 100px;
-    left: 100%;
-  }
-  100% {
-    top: 0;
-    left: 0;
-  }
-}
-@keyframes anime-green {
-  0% {
-    top: 0;
-    left: 0;
-  }
-  100% {
-    top: 100px;
-    left: 100%;
-  }
-}
+// @keyframes anime-green {
+//   0% {
+//     top 0
+//     left 0
+//   }
+//   100% {
+//     top 100px
+//     left 100%
+//   }
+// }
 
 .cube-red {
-  background: #EA6057;
-  z-index: 1;
-  -webkit-transform: rotate(22.5deg) skew(-45deg) scale(1, .7) translateY(-82%) translateX(-81%);
-      -ms-transform: rotate(22.5deg) skew(-45deg) scale(1, .7) translateY(-82%) translateX(-81%);
-          transform: rotate(22.5deg) skew(-45deg) scale(1, .7) translateY(-82%) translateX(-81%);
+  background lred
+  z-index 1
+  transform rotate(22.5deg) skew(-45deg) scale(1, .7) translateY(-82%) translateX(-81%)
 }
 
 .cube-yellow {
-  background: #F09219;
-  z-index: 2;
-  -webkit-transform: rotate(22.5deg) skew(-45deg) scale(1, .7) translateY(-164%) translateX(-162%);
-      -ms-transform: rotate(22.5deg) skew(-45deg) scale(1, .7) translateY(-164%) translateX(-162%);
-          transform: rotate(22.5deg) skew(-45deg) scale(1, .7) translateY(-164%) translateX(-162%);
+  background yellow
+  z-index 2
+  transform rotate(22.5deg) skew(-45deg) scale(1, .7) translateY(-164%) translateX(-162%)
 }
 
 .cube-modi::before,
 .cube-modi::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 128px;
-  height: 128px;
-  /*opacity: 0;*/
-  -webkit-animation-name: anime-modi;
-          animation-name: anime-modi;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
-  -webkit-animation-direction: normal;
-          animation-direction: normal;
-  -webkit-animation-duration: .5s;
-          animation-duration: .5s;
-  -webkit-animation-iteration-count: 1;
-          animation-iteration-count: 1;
-  -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
-          animation-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  /*-webkit-animation-play-state: running;*/
-  /*animation-play-state: running;*/
+  content ""
+  display block
+  position absolute
+  width 128px
+  height 128px
+  /*opacity 0*/
+  // -webkit-animation-name anime-modi
+  // animation-name anime-modi
+  // -webkit-animation-delay 1s
+  // animation-delay 1s
+  // -webkit-animation-direction normal
+  // animation-direction normal
+  // -webkit-animation-duration .5s
+  // animation-duration .5s
+  // -webkit-animation-iteration-count 1
+  // animation-iteration-count 1
+  // -webkit-animation-timing-function cubic-bezier(0.1, 0.7, 1.0, 0.1)
+  // animation-timing-function cubic-bezier(0.1, 0.7, 1.0, 0.1)
+  // -webkit-animation-fill-mode forwards
+  // animation-fill-mode forwards
+  /*-webkit-animation-play-state running*/
+  /*animation-play-state running*/
 }
-@-webkit-keyframes anime-modi {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes anime-green {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+// @keyframes anime-green {
+//   0% {
+//     opacity 0
+//   }
+//   100% {
+//     opacity 1
+//   }
+// }
 
 .cube-green::before {
-  background: #0AB3AE;
-  top: 0;
-  left: 0;
+  background lgreen
+  top: 0
+  left: 0
 }
 
 .cube-green::after {
-  background: #6A718D;
-  bottom: 0;
-  right: 0;
+  background purple
+  bottom: 0
+  right: 0
 }
 
 .cube-yellow::before {
-  background: #E74144;
-  top: 0;
-  left: 0;
+  background red
+  top: 0
+  left: 0
 }
 
 .cube-yellow::after {
-  background: #F7BB0D;
-  bottom: 0;
-  right: 0;
+  background l-yellow
+  bottom: 0
+  right: 0
 }

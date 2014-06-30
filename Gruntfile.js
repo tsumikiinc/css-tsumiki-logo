@@ -10,7 +10,6 @@ module.exports = function(grunt) {
       '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
       '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
       ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
-    // Task configuration.
     // concat: {
     //   options: {
     //     banner: '<%= banner %>',
@@ -21,15 +20,15 @@ module.exports = function(grunt) {
     //     dest: 'dist/<%= pkg.name %>.js'
     //   }
     // },
-    // uglify: {
-    //   options: {
-    //     banner: '<%= banner %>'
-    //   },
-    //   dist: {
-    //     src: '<%= concat.dist.dest %>',
-    //     dest: 'dist/<%= pkg.name %>.min.js'
-    //   }
-    // },
+    stylus: {
+      options: {
+        compress: false
+      },
+      dist: {
+        src: 'src/*.styl',
+        dest: 'dist/t.css'
+      }
+    },
     // jshint: {
     //   options: {
     //     curly: true,
@@ -58,21 +57,23 @@ module.exports = function(grunt) {
     // qunit: {
     //   files: ['test/**/*.html']
     // },
-    // watch: {
-    //   gruntfile: {
-    //     files: '<%= jshint.gruntfile.src %>',
-    //     tasks: ['jshint:gruntfile']
-    //   },
-    //   lib_test: {
-    //     files: '<%= jshint.lib_test.src %>',
-    //     tasks: ['jshint:lib_test', 'qunit']
-    //   }
-    // }
+    watch: {
+      options: {
+        livereload: true,
+        spawn: false
+      },
+      src: {
+        files: [
+          'src/t.styl'
+        ],
+        tasks: ['stylus']
+      }
+    },
     connect: {
       options: {
         port: 9006,
-        base: './',
-        keepalive: true
+        base: './'//,
+        // keepalive: true
       },
       server: {
       }
@@ -84,10 +85,11 @@ module.exports = function(grunt) {
   // grunt.loadNpmTasks('grunt-contrib-uglify');
   // grunt.loadNpmTasks('grunt-contrib-qunit');
   // grunt.loadNpmTasks('grunt-contrib-jshint');
-  // grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-stylus');
 
   // Default task.
-  grunt.registerTask('default', ['connect']);
+  grunt.registerTask('default', ['connect','watch']);
 
 };
