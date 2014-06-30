@@ -1,62 +1,42 @@
-/*global module:false*/
 module.exports = function(grunt) {
 
-  // Project configuration.
   grunt.initConfig({
-    // Metadata.
     pkg: grunt.file.readJSON('package.json'),
-    banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-      '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-      '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-      '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-      ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
-    // concat: {
-    //   options: {
-    //     banner: '<%= banner %>',
-    //     stripBanners: true
-    //   },
-    //   dist: {
-    //     src: ['lib/<%= pkg.name %>.js'],
-    //     dest: 'dist/<%= pkg.name %>.js'
-    //   }
-    // },
+    copy: {
+      demo: {
+        files: [
+          {
+            expand: true,
+            cwd: 'dist/',
+            src: [
+              't-logo.css'
+            ],
+            dest: 'demo/'
+          },
+        ]
+      }
+    },
     stylus: {
       options: {
         compress: false
       },
       dist: {
         src: 'src/*.styl',
-        dest: 'dist/t.css'
+        dest: 'dist/t-logo.css'
       }
     },
-    // jshint: {
-    //   options: {
-    //     curly: true,
-    //     eqeqeq: true,
-    //     immed: true,
-    //     latedef: true,
-    //     newcap: true,
-    //     noarg: true,
-    //     sub: true,
-    //     undef: true,
-    //     unused: true,
-    //     boss: true,
-    //     eqnull: true,
-    //     browser: true,
-    //     globals: {
-    //       jQuery: true
-    //     }
-    //   },
-    //   gruntfile: {
-    //     src: 'Gruntfile.js'
-    //   },
-    //   lib_test: {
-    //     src: ['lib/**/*.js', 'test/**/*.js']
-    //   }
-    // },
-    // qunit: {
-    //   files: ['test/**/*.html']
-    // },
+    cssmin: {
+      minify: {
+        expand: true,
+        cwd: 'dist/',
+        src: [
+          '*.css',
+          '!*.min.css'
+        ],
+        dest: 'dist/',
+        ext: '.min.css'
+      }
+    },
     watch: {
       options: {
         livereload: true,
@@ -64,32 +44,28 @@ module.exports = function(grunt) {
       },
       src: {
         files: [
-          'src/t.styl'
+          'src/t-logo.styl'
         ],
-        tasks: ['stylus']
+        tasks: ['stylus','copy:demo']
       }
     },
     connect: {
       options: {
         port: 9006,
-        base: './'//,
-        // keepalive: true
+        base: './demo/'
       },
       server: {
       }
     }
   });
 
-  // These plugins provide necessary tasks.
-  // grunt.loadNpmTasks('grunt-contrib-concat');
-  // grunt.loadNpmTasks('grunt-contrib-uglify');
-  // grunt.loadNpmTasks('grunt-contrib-qunit');
-  // grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-stylus');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
-  // Default task.
   grunt.registerTask('default', ['connect','watch']);
+  grunt.registerTask('min', ['cssmin']);
 
 };
