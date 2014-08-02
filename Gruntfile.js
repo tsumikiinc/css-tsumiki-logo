@@ -9,7 +9,8 @@ module.exports = function(grunt) {
             expand: true,
             cwd: 'dist/',
             src: [
-              't-logo.css'
+              '*.css',
+              '!t-logo.min.css'
             ],
             dest: 'demo/'
           },
@@ -21,8 +22,13 @@ module.exports = function(grunt) {
         compress: false
       },
       dist: {
-        src: 'src/*.styl',
-        dest: 'dist/t-logo.css'
+        expand: true,
+        cwd: 'src/',
+        src: [
+          '*.styl'
+        ],
+        dest: 'dist/',
+        ext: '.css'
       }
     },
     cssmin: {
@@ -44,9 +50,9 @@ module.exports = function(grunt) {
       },
       src: {
         files: [
-          'src/t-logo.styl'
+          'src/*'
         ],
-        tasks: ['stylus','copy:demo']
+        tasks: ['newer:stylus','copy:demo']
       }
     },
     connect: {
@@ -59,6 +65,7 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-stylus');

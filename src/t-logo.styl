@@ -1,23 +1,9 @@
 @charset "utf-8";
 
-/* color list
-#0AB3AE
-#5EBFBA
-#6A718D
-#EA6057
-#E74144
-#F09219
-#F7BB0D
-*/
-// vendors = official
-
+// Functions
 vendor-transform(prop, args) {
   -webkit-{prop} args
   -ms-{prop} args
-  {prop} args
-}
-vendor-animation(prop, args) {
-  -webkit-{prop} args
   {prop} args
 }
 
@@ -25,130 +11,98 @@ transform() {
   vendor-transform('transform', arguments)
 }
 
-animation() {
-  vendor('animation', arguments)
-}
 
+
+// Color list
 green = #0AB3AE
-lgreen = #5EBFBA
+l-green = #5EBFBA
+r-green = #5EBFBA
 purple = #6A718D
-lred = #EA6057
+l-red = #EA6057
+r-red = #EA6057
 red = #E74144
-yellow = #F09219
-l-yellow = #F7BB0D
+l-orange = #F09219
+r-orange = #F09219
+yellow = #F7BB0D
+
+
+
+// Size
+cube-size = 128px
+
+
 
 .tsumiki-logo {
-  background #fff
-  // padding 20% 0 0 256px
-  width 512px
-  margin 0 auto
-  transform scale(1, 1.2) translateX(25%) translateY(15%);
+  // position relative
+  // left cube-size
+  margin 0
+  padding 0
+  border none
+  font-size 10px
+  outline none
+  margin-left cube-size
 }
 
 .cube {
-  width 256px
-  height 256px
+  margin 0
+  margin-bottom -(round(cube-size / .7734138972809668))
+  padding 0
+  border none
+  font-size 10px
+  outline none
+  width cube-size * 2
+  height cube-size * 2
+  transform scaleX(1) scaleY(.5) rotate(45deg)
   position relative
+  &:before {
+    content ""
+    display block
+    position absolute
+    width cube-size
+    height cube-size
+    top 0
+    left 0
+  }
+  &:after {
+    content ""
+    display block
+    position absolute
+    width cube-size
+    height cube-size
+    top cube-size
+    left cube-size 
+  }
 }
 
-.cube-green {
-  background green
+.cube-first {
+  background linear-gradient(to right, l-green 0%, l-green cube-size, r-green cube-size, r-green cube-size)
   z-index 2
-  transform rotate(22.5deg) skew(-45deg) scale(1, .7)
-  // -webkit-animation-name anime-green
-  // animation-name anime-green
-  // -webkit-animation-delay 0
-  // animation-delay 0
-  // -webkit-animation-direction normal
-  // animation-direction normal
-  // -webkit-animation-duration 1s
-  // animation-duration 1s
-  // -webkit-animation-iteration-count 1
-  // animation-iteration-count 1
-  // -webkit-animation-timing-function cubic-bezier(0.1, 0.7, 1.0, 0.1)
-  // animation-timing-function cubic-bezier(0.1, 0.7, 1.0, 0.1)
-  // -webkit-animation-fill-mode forwards
-  // animation-fill-mode forwards
-  /*-webkit-animation-play-state running*/
-  /*animation-play-state running*/
+  &:before {
+    background green
+  }
+  &:after {
+    background purple
+  }
 }
-// @keyframes anime-green {
-//   0% {
-//     top 0
-//     left 0
-//   }
-//   100% {
-//     top 100px
-//     left 100%
-//   }
-// }
 
-.cube-red {
-  background lred
+.cube-second {
+  background linear-gradient(to right, l-red 0%, l-red cube-size, r-red cube-size, r-red cube-size)
   z-index 1
-  transform rotate(22.5deg) skew(-45deg) scale(1, .7) translateY(-82%) translateX(-81%)
+  &:before {
+    display none
+  }
+  &:after {
+    display none
+  }
 }
 
-.cube-yellow {
-  background yellow
+.cube-third {
+  background linear-gradient(to right, l-orange 0%, l-orange cube-size, r-orange cube-size, r-orange cube-size)
   z-index 2
-  transform rotate(22.5deg) skew(-45deg) scale(1, .7) translateY(-164%) translateX(-162%)
-}
-
-.cube-modi::before,
-.cube-modi::after {
-  content ""
-  display block
-  position absolute
-  width 128px
-  height 128px
-  /*opacity 0*/
-  // -webkit-animation-name anime-modi
-  // animation-name anime-modi
-  // -webkit-animation-delay 1s
-  // animation-delay 1s
-  // -webkit-animation-direction normal
-  // animation-direction normal
-  // -webkit-animation-duration .5s
-  // animation-duration .5s
-  // -webkit-animation-iteration-count 1
-  // animation-iteration-count 1
-  // -webkit-animation-timing-function cubic-bezier(0.1, 0.7, 1.0, 0.1)
-  // animation-timing-function cubic-bezier(0.1, 0.7, 1.0, 0.1)
-  // -webkit-animation-fill-mode forwards
-  // animation-fill-mode forwards
-  /*-webkit-animation-play-state running*/
-  /*animation-play-state running*/
-}
-// @keyframes anime-green {
-//   0% {
-//     opacity 0
-//   }
-//   100% {
-//     opacity 1
-//   }
-// }
-
-.cube-green::before {
-  background lgreen
-  top: 0
-  left: 0
-}
-
-.cube-green::after {
-  background purple
-  bottom: 0
-  right: 0
-}
-
-.cube-yellow::before {
-  background red
-  top: 0
-  left: 0
-}
-
-.cube-yellow::after {
-  background l-yellow
-  bottom: 0
-  right: 0
+  &:before {
+    background red
+  }
+  &:after {
+    background yellow
+  }
 }
