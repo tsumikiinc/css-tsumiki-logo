@@ -14,16 +14,16 @@ transform() {
 
 
 // Color list
-green = #0AB3AE
-l-green = #5EBFBA
-r-green = #5EBFBA
-purple = #6A718D
-l-red = #EA6057
-r-red = #EA6057
-red = #E74144
-l-orange = #F09219
-r-orange = #F09219
-yellow = #F7BB0D
+green = #23AAA4
+l-green = #78BEB2
+r-green = #5AB5B0
+purple = #686F89
+l-red = #DD6664
+r-red = #DC5D54
+red = #D94142
+l-orange = #E9A21F
+r-orange = #E78E21
+yellow = #EDB51C
 
 
 
@@ -75,7 +75,7 @@ cube-size = 128px
 }
 
 .cube-first {
-  background linear-gradient(to right, l-green 0%, l-green cube-size, r-green cube-size, r-green cube-size)
+  background linear-gradient(to right, l-green 0, l-green cube-size, r-green cube-size, r-green cube-size)
   z-index 2
   &:before {
     background green
@@ -86,7 +86,7 @@ cube-size = 128px
 }
 
 .cube-second {
-  background linear-gradient(to right, l-red 0%, l-red cube-size, r-red cube-size, r-red cube-size)
+  background linear-gradient(to right, l-red 0, l-red cube-size, r-red cube-size, r-red cube-size)
   z-index 1
   &:before {
     display none
@@ -97,7 +97,7 @@ cube-size = 128px
 }
 
 .cube-third {
-  background linear-gradient(to right, l-orange 0%, l-orange cube-size, r-orange cube-size, r-orange cube-size)
+  background linear-gradient(to right, l-orange 0, l-orange cube-size, r-orange cube-size, r-orange cube-size)
   z-index 2
   &:before {
     background red
