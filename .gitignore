@@ -98,3 +98,5 @@ Session.vim
 
 
 bower_components/
+
+.sass-cache/

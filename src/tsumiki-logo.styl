@@ -1,15 +1,14 @@
-@charset "utf-8";
+/* Pure CSS Tsumiki logo. License Tsumiki inc. */
+@charset "utf-8"
 
 // Functions
-vendor-transform(prop, args) {
+vendor-transform(prop, args)
   -webkit-{prop} args
   -ms-{prop} args
   {prop} args
-}
 
-transform() {
+transform()
   vendor-transform('transform', arguments)
-}
 
 
 
@@ -32,18 +31,15 @@ cube-size = 128px
 
 
 
-.tsumiki-logo {
-  // position relative
-  // left cube-size
+.tsumiki-logo
   margin 0
   padding 0
   border none
   font-size 10px
   outline none
   margin-left cube-size
-}
 
-.cube {
+.cube
   margin 0
   margin-bottom -(round(cube-size / .7734138972809668))
   padding 0
@@ -54,7 +50,7 @@ cube-size = 128px
   height cube-size * 2
   transform scaleX(1) scaleY(.5) rotate(45deg)
   position relative
-  &:before {
+  &:before
     content ""
     display block
     position absolute
@@ -62,8 +58,8 @@ cube-size = 128px
     height cube-size
     top 0
     left 0
-  }
-  &:after {
+
+  &:after
     content ""
     display block
     position absolute
@@ -71,38 +67,30 @@ cube-size = 128px
     height cube-size
     top cube-size
     left cube-size 
-  }
-}
 
-.cube-first {
+.cube-first
   background linear-gradient(to right, l-green 0, l-green cube-size, r-green cube-size, r-green cube-size)
   z-index 2
-  &:before {
+  &:before
     background green
-  }
-  &:after {
-    background purple
-  }
-}
 
-.cube-second {
+  &:after
+    background purple
+
+.cube-second
   background linear-gradient(to right, l-red 0, l-red cube-size, r-red cube-size, r-red cube-size)
   z-index 1
-  &:before {
+  &:before
     display none
-  }
-  &:after {
-    display none
-  }
-}
 
-.cube-third {
+  &:after
+    display none
+
+.cube-third
   background linear-gradient(to right, l-orange 0, l-orange cube-size, r-orange cube-size, r-orange cube-size)
   z-index 2
-  &:before {
+  &:before
     background red
-  }
-  &:after {
+
+  &:after
     background yellow
-  }
-}

@@ -1,0 +1,107 @@
+/* Pure CSS Tsumiki logo. License Tsumiki inc. */
+@charset "utf-8";
+
+// Functions
+@mixin vendor-transform($args) {
+  -webkit-transform: $args;
+  -ms-transform: $args;
+  transform: $args;
+}
+
+@mixin transform($arguments) {
+  @include vendor-transform($arguments)
+}
+
+
+
+// Color list
+$green: #23AAA4;
+$l-green: #78BEB2;
+$r-green: #5AB5B0;
+$purple: #686F89;
+$l-red: #DD6664;
+$r-red: #DC5D54;
+$red: #D94142;
+$l-orange: #E9A21F;
+$r-orange: #E78E21;
+$yellow: #EDB51C;
+
+
+
+// Size
+$cube-size: 128px;
+
+
+
+.tsumiki-logo {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-size: 10px;
+  outline: none;
+  margin-left: $cube-size;
+}
+
+.cube {
+  margin: 0;
+  margin-bottom: -(round($cube-size / .7734138972809668));
+  padding: 0;
+  border: none;
+  font-size: 10px;
+  outline: none;
+  width: $cube-size * 2;
+  height: $cube-size * 2;
+  @include transform(scaleX(1) scaleY(.5) rotate(45deg));
+  position: relative;
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: $cube-size;
+    height: $cube-size;
+    top: 0;
+    left: 0;
+  }
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: $cube-size;
+    height: $cube-size;
+    top: $cube-size;
+    left: $cube-size ;
+  }
+}
+
+.cube-first {
+  background: linear-gradient(to right, $l-green 0, $l-green $cube-size, $r-green $cube-size, $r-green $cube-size);
+  z-index: 2;
+  &:before {
+    background: $green;
+  }
+  &:after {
+    background: $purple;
+  }
+}
+
+.cube-second {
+  background: linear-gradient(to right, $l-red 0, $l-red $cube-size, $r-red $cube-size, $r-red $cube-size);
+  z-index: 1;
+  &:before {
+    display: none;
+  }
+  &:after {
+    display: none;
+  }
+}
+
+.cube-third {
+  background: linear-gradient(to right, $l-orange 0, $l-orange $cube-size, $r-orange $cube-size, $r-orange $cube-size);
+  z-index: 2;
+  &:before {
+    background: $red;
+  }
+  &:after {
+    background: $yellow;
+  }
+}

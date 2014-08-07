@@ -14,20 +14,44 @@
 </div>
 ```
 
-### Style
+### Stylesheet language
 
-Using [Stylus](http://learnboost.github.io/stylus/) .
+Using **[Stylus](http://learnboost.github.io/stylus/)** or **[Sass](http://sass-lang.com/)** .
 
-Will specify the size.
+### Specifies the size
+
+
+* Stylus
 
 ```
 // Size
 cube-size = 128px
 ```
 
+* Sass
+
+```
+// Size
+$cube-size: 128px;
+```
+
 ## Demo
 
-[https://sugarshin.github.com/t-logo/demo/](https://sugarshin.github.com/t-logo/demo/)
+[https://tsumikiinc.github.io/css-tsumiki-logo/demo/](https://tsumikiinc.github.io/css-tsumiki-logo/demo/)
+
+## Grunt
+
+Using Stylus.
+
+```
+grunt st
+```
+
+Using Sass.
+
+```
+grunt sa
+```
 
 ## License
 

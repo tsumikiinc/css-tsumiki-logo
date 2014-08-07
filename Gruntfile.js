@@ -31,7 +31,24 @@ module.exports = function(grunt) {
         ext: '.css'
       }
     },
+    sass: {
+      options: {
+        style: 'compressed'
+      },
+      dist: {
+        expand: true,
+        cwd: 'src/',
+        src: [
+          '*.scss'
+        ],
+        dest: 'dist/',
+        ext: '.css'
+      }
+    },
     cssmin: {
+      options: {
+        banner: '/* ' + '<%= pkg.description %>' + '. License Tsumiki inc. */'
+      },
       minify: {
         expand: true,
         cwd: 'dist/',
@@ -48,11 +65,17 @@ module.exports = function(grunt) {
         livereload: true,
         spawn: false
       },
-      src: {
+      st: {
         files: [
-          'src/*'
+          'src/*.styl'
         ],
-        tasks: ['newer:stylus','copy:demo']
+        tasks: ['stylus','copy:demo']
+      },
+      sa: {
+        files: [
+          'src/*.scss'
+        ],
+        tasks: ['sass','copy:demo']
       }
     },
     connect: {
@@ -65,14 +88,22 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-stylus');
+  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
 
-  grunt.registerTask('default', ['connect','watch']);
+
+
+  // Use Stylus
+  grunt.registerTask('st', ['connect','watch:st']);
+
+  // Use Sass
+  grunt.registerTask('sa', ['connect','watch:sa']);
+
+  // Minify
   grunt.registerTask('min', ['cssmin']);
 
 };
