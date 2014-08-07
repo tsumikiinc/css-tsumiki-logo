@@ -53,6 +53,10 @@ Using Sass.
 grunt sa
 ```
 
+## Support
+
+Modern browser and IE10+
+
 ## License
 
 © Tsumiki inc.
