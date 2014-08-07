@@ -2,6 +2,11 @@
 
 [http://www.tsumikiinc.com/](http://www.tsumikiinc.com/)
 
+## Demo
+
+[https://tsumikiinc.github.io/css-tsumiki-logo/demo/](https://tsumikiinc.github.io/css-tsumiki-logo/demo/)
+
+
 ## Usage
 
 ### Markup
@@ -34,10 +39,6 @@ cube-size = 128px
 // Size
 $cube-size: 128px;
 ```
-
-## Demo
-
-[https://tsumikiinc.github.io/css-tsumiki-logo/demo/](https://tsumikiinc.github.io/css-tsumiki-logo/demo/)
 
 ## Grunt
 
