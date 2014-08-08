@@ -6,43 +6,66 @@
   border: none;
   font-size: 10px;
   outline: none;
-  margin-left: 128px;
+  margin-top: 64px;
+  margin-left: 64px;
+  width: 256px;
+  height: 256px;
+  position: relative;
+  z-index: 1;
+  -webkit-transform: scaleX(1) scaleY(0.5) rotate(45deg);
+  -ms-transform: scaleX(1) scaleY(0.5) rotate(45deg);
+  transform: scaleX(1) scaleY(0.5) rotate(45deg);
+}
+.tsumiki-logo:before,
+.tsumiki-logo:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 128px;
+  height: 128px;
+  z-index: 1;
+}
+.tsumiki-logo:before {
+  bottom: 0;
+  left: 0;
+  background: #dd6664;
+}
+.tsumiki-logo:after {
+  top: 0;
+  right: 0;
+  background: #dc5d54;
 }
 .cube {
   margin: 0;
-  margin-bottom: -165px;
   padding: 0;
   border: none;
   font-size: 10px;
   outline: none;
   width: 256px;
   height: 256px;
-  -webkit-transform: scaleX(1) scaleY(0.5) rotate(45deg);
-  -ms-transform: scaleX(1) scaleY(0.5) rotate(45deg);
-  transform: scaleX(1) scaleY(0.5) rotate(45deg);
   position: relative;
 }
-.cube:before {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 128px;
-  height: 128px;
-  top: 0;
-  left: 0;
-}
+.cube:before,
 .cube:after {
   content: "";
   display: block;
   position: absolute;
   width: 128px;
   height: 128px;
+}
+.cube:before {
+  top: 0;
+  left: 0;
+}
+.cube:after {
   top: 128px;
   left: 128px;
 }
 .cube-first {
   background: linear-gradient(to right, #78beb2 0, #78beb2 128px, #5ab5b0 128px, #5ab5b0 128px);
-  z-index: 2;
+  top: -128px;
+  left: -128px;
+  z-index: 1;
 }
 .cube-first:before {
   background: #23aaa4;
@@ -51,22 +74,14 @@
   background: #686f89;
 }
 .cube-second {
-  background: linear-gradient(to right, #dd6664 0, #dd6664 128px, #dc5d54 128px, #dc5d54 128px);
+  background: linear-gradient(to right, #e9a21f 0, #e9a21f 128px, #e78e21 128px, #e78e21 128px);
+  top: -128px;
+  left: 128px;
   z-index: 1;
 }
 .cube-second:before {
-  display: none;
-}
-.cube-second:after {
-  display: none;
-}
-.cube-third {
-  background: linear-gradient(to right, #e9a21f 0, #e9a21f 128px, #e78e21 128px, #e78e21 128px);
-  z-index: 2;
-}
-.cube-third:before {
   background: #d94142;
 }
-.cube-third:after {
+.cube-second:after {
   background: #edb51c;
 }

@@ -2,6 +2,8 @@
 
 [http://www.tsumikiinc.com/](http://www.tsumikiinc.com/)
 
+v1.1.0
+
 ## Demo
 
 [https://tsumikiinc.github.io/css-tsumiki-logo/demo/](https://tsumikiinc.github.io/css-tsumiki-logo/demo/)
@@ -15,7 +17,6 @@
 <div class="tsumiki-logo">
   <div class="cube cube-first"></div>
   <div class="cube cube-second"></div>
-  <div class="cube cube-third"></div>
 </div>
 ```
 

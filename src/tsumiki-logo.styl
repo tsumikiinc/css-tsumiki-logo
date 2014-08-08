@@ -37,40 +37,56 @@ cube-size = 128px
   border none
   font-size 10px
   outline none
-  margin-left cube-size
+  margin-top (cube-size / 2)
+  margin-left (cube-size / 2)
+  width cube-size * 2
+  height cube-size * 2
+  position relative
+  z-index 1
+  transform scaleX(1) scaleY(.5) rotate(45deg)
+  &:before, &:after
+    content ""
+    display block
+    position absolute
+    width cube-size
+    height cube-size
+    z-index 1
+  &:before
+    bottom 0
+    left 0
+    background l-red
+  &:after
+    top 0
+    right 0
+    background r-red
 
 .cube
   margin 0
-  margin-bottom -(round(cube-size / .7734138972809668))
   padding 0
   border none
   font-size 10px
   outline none
   width cube-size * 2
   height cube-size * 2
-  transform scaleX(1) scaleY(.5) rotate(45deg)
   position relative
-  &:before
+  &:before, &:after
     content ""
     display block
     position absolute
     width cube-size
     height cube-size
+  &:before
     top 0
     left 0
-
   &:after
-    content ""
-    display block
-    position absolute
-    width cube-size
-    height cube-size
     top cube-size
     left cube-size 
 
 .cube-first
   background linear-gradient(to right, l-green 0, l-green cube-size, r-green cube-size, r-green cube-size)
-  z-index 2
+  top -(cube-size)
+  left -(cube-size)
+  z-index 1
   &:before
     background green
 
@@ -78,17 +94,10 @@ cube-size = 128px
     background purple
 
 .cube-second
-  background linear-gradient(to right, l-red 0, l-red cube-size, r-red cube-size, r-red cube-size)
-  z-index 1
-  &:before
-    display none
-
-  &:after
-    display none
-
-.cube-third
   background linear-gradient(to right, l-orange 0, l-orange cube-size, r-orange cube-size, r-orange cube-size)
-  z-index 2
+  top -(cube-size)
+  left cube-size
+  z-index 1
   &:before
     background red
 

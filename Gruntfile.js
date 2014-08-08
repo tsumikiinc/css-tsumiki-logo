@@ -10,7 +10,7 @@ module.exports = function(grunt) {
             cwd: 'dist/',
             src: [
               '*.css',
-              '!t-logo.min.css'
+              '!tsumiki-logo.min.css'
             ],
             dest: 'demo/'
           },
